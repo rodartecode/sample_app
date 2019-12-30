@@ -1,2 +1,3 @@
 module StaticPagesHelper
+  #test
 end
