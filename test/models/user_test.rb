@@ -86,4 +86,15 @@ class UserTest < ActiveSupport::TestCase
       @user.destroy
     end
   end
+
+  test "should follow and unfollow a user" do
+    jesse = users(:jesse)
+    archer = users(:archer)
+    assert_not jesse.following?(archer)
+    jesse.follow(archer)
+    assert jesse.following?(archer)
+    assert archer.followers.include?(jesse)
+    jesse.unfollow(archer)
+    assert_not jesse.following?(archer)
+  end
 end
